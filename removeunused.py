@@ -16,9 +16,9 @@ def set_xrf():
 xrf = set_xrf()
 
 headers = {"X-Qlik-XrfKey": xrf,
-            "Accept": "application/json",
-            "X-Qlik-User": "UserDirectory=Internal;UserID=sa_repository",
-            "Content-Type": "application/json"}
+           "Accept": "application/json",
+           "X-Qlik-User": "UserDirectory=Internal;UserID=sa_repository",
+           "Content-Type": "application/json"}
 
 session = requests.session()
 
@@ -27,8 +27,8 @@ class ConnectQlik:
     Instantiates the Qlik Repository Service Class
     """
 
-    def __init__(self, server, certificate = False, root = False
-        ,userdirectory = False, userid = False, credential = False, password = False):
+    def __init__(self, server, certificate=False, root=False, userdirectory=False,
+                 userid=False, credential=False, password=False):
         """
         Establishes connectivity with Qlik Sense Repository Service
         :param server: servername.domain:4242
@@ -47,8 +47,7 @@ class ConnectQlik:
         self.credential = credential
         self.password = password
 
-    
-    def get(self,endpoint,filterparam=None, filtervalue=None):
+    def get(self, endpoint, filterparam=None, filtervalue=None):
         """
         Function that performs GET method to Qlik Repository Service endpoints
         :param endpoint: API endpoint path
@@ -60,11 +59,11 @@ class ConnectQlik:
             headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
         if filterparam is None:
             if '?' in endpoint:
-                response = session.get('https://{0}/{1}&xrfkey={2}'.format (self.server, endpoint, xrf),
+                response = session.get('https://{0}/{1}&xrfkey={2}'.format(self.server, endpoint, xrf),
                                         headers=headers, verify=False, cert=self.certificate)
                 return response.content
             else:
-                response = session.get('https://{0}/{1}?xrfkey={2}'.format (self.server, endpoint, xrf),
+                response = session.get('https://{0}/{1}?xrfkey={2}'.format(self.server, endpoint, xrf),
                                         headers=headers, verify=False, cert=self.certificate)
                 return response.content
         else:
@@ -210,9 +209,9 @@ class ConnectQlik:
 
 if __name__ == '__main__':
     server = '10.67.30.160'
-    client = 'C:\client.pem'
-    client_key = 'C:\client_key.pem'
-    root = 'C:\root.pem'
+    client = 'C:\\client.pem'
+    client_key = 'C:\\client_key.pem'
+    root = 'C:\\root.pem'
 
     qrs = ConnectQlik(server=server + ':4242', certificate=(client,client_key,root))
     print('connecting to QRS')
