@@ -3,6 +3,8 @@ import json
 import random
 import string
 import datetime
+
+
 # Code derived from Clint Carr
 # ============================
 
@@ -208,6 +210,11 @@ class ConnectQlik:
 
 
 if __name__ == '__main__':
+    #server = '10.71.58.232'
+    #client = 'C:\\indt-smart-dashboard-test.deloitte.com\\client.pem'
+    #client_key = 'C:\\indt-smart-dashboard-test.deloitte.com\\client_key.pem'
+    #root = 'C:\\indt-smart-dashboard-test.deloitte.com\\root.pem'
+    
     server = '10.67.30.160'
     client = 'C:\\client.pem'
     client_key = 'C:\\client_key.pem'
